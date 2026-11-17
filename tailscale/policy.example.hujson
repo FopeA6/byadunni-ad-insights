@@ -1,0 +1,25 @@
+// Example tailnet policy for the ad insights MCP server.
+//
+// Ad spend and revenue are business-sensitive, so only owners can reach this machine at all.
+// Check the current syntax in Tailscale's docs before saving: this is a starting point, not a drop-in file.
+{
+  "groups": {
+    "group:owners": ["owner@example.com"]
+  },
+
+  // Only owners can tag a machine as the ads server.
+  "tagOwners": {
+    "tag:adunni-ads": ["group:owners"]
+  },
+
+  "grants": [
+    // Owners can reach the MCP server over HTTPS (port 443, where Tailscale Serve listens). Nobody else can.
+    {
+      "src": ["group:owners"],
+      "dst": ["tag:adunni-ads"],
+      "ip": ["443"]
+    }
+  ]
+
+  // Remove the default "allow everything" rule from your policy, otherwise this grant adds nothing.
+}

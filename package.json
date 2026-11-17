@@ -1,0 +1,27 @@
+{
+  "name": "adunni-ad-insights",
+  "version": "1.0.0",
+  "description": "Turns Meta Ads exports into clear keep, pause or wait calls for a small shop, grouped by creative type, with honest uncertainty. Includes a private MCP server reachable only over Tailscale.",
+  "type": "module",
+  "scripts": {
+    "report": "tsx src/cli.ts",
+    "mcp": "tsx src/http.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "keywords": ["meta-ads", "creative-testing", "mcp", "tailscale", "ecommerce"],
+  "author": "Fopefoluwa Ayo",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}
